@@ -26,15 +26,18 @@ namespace FunctionChallenges
         }
 
         // Challenge 2 Functions
-        static string SwapObjects<T,Y>(ref T val1, Y val2){
-            try{
+        static string SwapObjects<T, Y>(ref T val1, Y val2)
+        {
+            try
+            {
                 throw new Exception(" Error: Objects must be of same types and have references");
             }
-            catch(Exception e) {
+            catch (Exception e)
+            {
                 return $"{e.Message}";
             }
         }
-        static string SwapObjects<T,Y>(T val1, Y val2) 
+        static string SwapObjects<T, Y>(T val1, Y val2)
         {
             try
             {
@@ -80,6 +83,50 @@ namespace FunctionChallenges
             }
         }
 
+        // Challlenge 3 Function
+        static void GuessingGame()
+        {
+            try
+            {
+                Console.WriteLine("Welcome To Guessing Game!");
+
+                Random rnd = new();
+                int number = rnd.Next(1, 11);
+
+                while (true)
+                {
+
+                    Console.Write("Guess an integer number between 1 to 10 , or enter (q) to Quit a Game >>> ");
+                    string input = Console.ReadLine() ?? "";
+
+                    if (input.ToLower().Equals("q"))
+                    {
+                        Console.WriteLine($"The Answer is '{number}'\n-------End Game-------");
+                        break;
+                    }
+
+                    if (!int.TryParse(input, out int guessedNumber) || guessedNumber > 10)
+                    {
+                        Console.WriteLine("Invalid input!\n");
+                        continue;
+                    }
+
+                    if (guessedNumber != number)
+                    {
+                        Console.WriteLine("Wrong! try again");
+                        continue;
+                    }
+
+                    Console.WriteLine($"Well Done! The correct number is {number}.");
+                    break;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         static void Main(string[] args)
         {
             // Challenge 1: String and Number Processor
@@ -107,9 +154,9 @@ namespace FunctionChallenges
             Console.WriteLine($"Strings: {str1}, {str2}");
 
             // // Challenge 3: Guessing Game
-            // Console.WriteLine("\nChallenge 3: Guessing Game");
-            // // Uncomment to test the GuessingGame method
-            // // GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
+            Console.WriteLine("\nChallenge 3: Guessing Game");
+            // Uncomment to test the GuessingGame method
+            GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // // Challenge 4: Simple Word Reversal
             // Console.WriteLine("\nChallenge 4: Simple Word Reversal");
