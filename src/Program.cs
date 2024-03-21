@@ -6,6 +6,7 @@ namespace FunctionChallenges
     {
         private static object _;
 
+        // Challenge #1 Function
         static void StringNumberProcessor(params object[] values)
         {
             int sum = 0;
@@ -25,7 +26,7 @@ namespace FunctionChallenges
             Console.WriteLine($"{sentence}; {sum}");
         }
 
-        // Challenge 2 Functions
+        // Challenge #2 Functions
         static string SwapObjects<T, Y>(ref T val1, Y val2)
         {
             try
@@ -83,7 +84,7 @@ namespace FunctionChallenges
             }
         }
 
-        // Challlenge 3 Function
+        // Challlenge #3 Function
         static void GuessingGame()
         {
             try
@@ -127,6 +128,22 @@ namespace FunctionChallenges
             }
         }
 
+        //  Challenge #4 Function
+        static string ReverseWords(string sentence){
+
+            string[] sentenceArray = sentence.Split(" ");
+            List<string> sentenceList = [];
+
+            foreach(string val in sentenceArray){
+                char[] array = val.ToCharArray();
+                Array.Reverse(array);
+                string convertedWord = new(array);
+                sentenceList.Add(convertedWord);
+            }
+            string combinedString = string.Join( " ", [.. sentenceList]);
+            return combinedString;
+        }
+
         static void Main(string[] args)
         {
             // Challenge 1: String and Number Processor
@@ -159,10 +176,10 @@ namespace FunctionChallenges
             GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // // Challenge 4: Simple Word Reversal
-            // Console.WriteLine("\nChallenge 4: Simple Word Reversal");
-            // string sentence = "This is the original sentence!";
-            // string reversed = ReverseWords(sentence);
-            // Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
+            Console.WriteLine("\nChallenge 4: Simple Word Reversal");
+            string sentence = "This is the original sentence!";
+            string reversed = ReverseWords(sentence);
+            Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
         }
     }
 }
